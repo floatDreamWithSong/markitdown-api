@@ -1,5 +1,5 @@
 # Stage 1: Builder stage
-FROM python:3.13-slim AS builder
+FROM python:3.13-bullseye AS builder
 
 # Install uv
 RUN pip install uv
@@ -16,7 +16,7 @@ ENV PATH="/app/venv/bin:$PATH"
 RUN uv pip install --no-cache-dir -r requirements.txt
 
 # Stage 2: Final stage
-FROM python:3.13-slim
+FROM python:3.13-bullseye
 
 # Create a non-root user
 RUN groupadd -r appuser && useradd -r -g appuser appuser
